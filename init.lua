@@ -227,7 +227,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -270,6 +270,14 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- [[ Custom Keymaps ]]
+
+-- Set colorcolumn
+vim.o.colorcolumn = "80"
+
+-- Keep 8 lines to bottom
+vim.o.scrolloff = 8
 
 -- [[ Basic Keymaps ]]
 
@@ -559,6 +567,35 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- [[ Custom Keymaps ]]
+
+-- Open current directory
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- Split tab
+vim.keymap.set("n", "<leader>tv", vim.cmd.vsplit)
+vim.keymap.set("n", "<leader>th", vim.cmd.split)
+
+-- Move lines
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Jumpung half pages and centering
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Replace current word wituout and with confirmation
+vim.keymap.set("n", "<leader>ss", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+vim.keymap.set("n", "<leader>sc", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gc<Left><Left><Left>")
+
+-- Activate a bash script
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", {silent = true})
+
+-- Toggle UndoTree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
