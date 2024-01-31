@@ -3,5 +3,12 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  {
   'mbbill/undotree'
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
 }
