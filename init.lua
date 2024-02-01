@@ -439,7 +439,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<C-K>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -599,19 +599,19 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 local harpoon = require("harpoon")
 
-harpoon:setup()
+harpoon:setup({})
 
 vim.keymap.set("n", "<leader>m", function() harpoon:list():append() end)
-vim.keymap.set("n", "<C-h>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<C-o>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-3>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-4>", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<C-S-H>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-S-L>", function() harpoon:list():next() end)
+vim.keymap.set("n", "<C-H>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-L>", function() harpoon:list():next() end)
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
